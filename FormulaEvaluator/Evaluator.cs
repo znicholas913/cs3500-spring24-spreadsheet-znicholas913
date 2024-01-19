@@ -28,6 +28,8 @@ public static class Evaluator
         for (int i = 0; i < substrings.Length; i++)
         {
             substrings[i] = substrings[i].Trim();
+            if (substrings[i] == "" || substrings[i] == " ")
+                continue;
             int j = 0;
             bool result = int.TryParse(substrings[i], out j);
 
@@ -36,8 +38,8 @@ public static class Evaluator
 
             if (result) // if t is an integer
             {
-                if (oper.Peek() == "*" ||
-                    oper.Peek() == "/") // if the top operator of the stack is multiplication or division 
+                if (oper.Count != 0 && (oper.Peek() == "*" ||
+                    oper.Peek() == "/")) // if the top operator of the stack is multiplication or division 
                 {
                     //pop the top value and the top operator and apply them to the next value t
                     int x = value.Pop();
@@ -49,17 +51,17 @@ public static class Evaluator
                 {
                     value.Push(Int32.Parse(substrings[i]));
                 }
+                continue;
             }
 
 
 
 
 
-            else if (substrings[i] != "+" || substrings[i] != "-" || substrings[i] != "*" || substrings[i] != "/"
-                     || substrings[i] != ")" || substrings[i] != "(") // t is a variable
+            if (substrings[i] != "+" && substrings[i] != "-" && substrings[i] != "*" && substrings[i] != "/"
+                && substrings[i] != ")" && substrings[i] != "(") // t is a variable
             {
-                if (oper.Peek() == "*" ||
-                    oper.Peek() == "/") // if the top operator of the stack is multiplication or division 
+                if (oper.Count != 0 && (oper.Peek() == "*" || oper.Peek() == "/")) // if the top operator of the stack is multiplication or division 
                 {
                     //pop the top value and the top operator and apply them to the next value t
                     int x = value.Pop();
@@ -71,14 +73,15 @@ public static class Evaluator
                 {
                     value.Push(variableEvaluator(substrings[i]));
                 }
+                continue;
             }
 
 
 
-            else if (substrings[i] == "+" || substrings[i] == "-") //if the next t is + or - 
+            if (substrings[i] == "+" || substrings[i] == "-") //if the next t is + or - 
             {
-                if (oper.Peek() == "+" ||
-                    oper.Peek() == "-") // if the top operator of the stack is addition or subtraction
+                if (oper.Count != 0 && (oper.Peek() == "+" ||
+                    oper.Peek() == "-")) // if the top operator of the stack is addition or subtraction
                 {
                     //pop the top two values and the top operator and push the end result
                     int x = value.Pop();
@@ -88,21 +91,24 @@ public static class Evaluator
                 }
 
                 oper.Push(substrings[i]);
+                continue;
             }
 
 
-            else if
+            if
                 (substrings[i] == "*" ||
                  substrings[i] == "/") //if the next t is * or / then just push it to the operator stack
             {
                 oper.Push(substrings[i]);
+                continue;
             }
-            else if (substrings[i] == "(") // if the next t is ( then push it to the operator stack
+            if (substrings[i] == "(") // if the next t is ( then push it to the operator stack
             {
                 oper.Push(substrings[i]);
+                continue;
             }
             //if the next t is ) then continue
-            else if (substrings[i] == ")")
+            if (substrings[i] == ")")
             {
                 //1. if + or - is at the top , pop the value stack twice and operator stack once. Push result into value stack.
                 if (oper.Peek() == "+" ||
@@ -115,7 +121,7 @@ public static class Evaluator
                     value.Push(calc(x, y, opp));
                 }
                 //2. the top of the operator stack should be ( , pop it.
-                else if (oper.Peek() == "(")
+                if (oper.Peek() == "(")
                     oper.Pop();
 
                 //3. If * or / is at the top, pop the value stack twice and operator stack once. Push result into value stack.
@@ -129,7 +135,11 @@ public static class Evaluator
                 }
             }
         }
-        return value.Pop();
+        if (oper.Count == 0)
+            return value.Pop();
+        if (oper.Count != 0)
+            return calc(value.Pop(), value.Pop(), oper.Pop());
+        return -1;
     }
 
     /// <summary>

@@ -7,9 +7,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0be044ff-4525-44ac-8085-ef2298228040" name="Changes" comment="Version 1">
+    <list default="true" id="0be044ff-4525-44ac-8085-ef2298228040" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Spreadsheet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spreadsheet/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FormulaEvaluator/Evaluator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/Evaluator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/ref/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/ref/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/refint/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/refint/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/ref/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/ref/FormulaEvaluatorTester.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/refint/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/refint/FormulaEvaluatorTester.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +42,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/FormulaEvaluator/Evaluator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -33,28 +56,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.FormulaEvaluatorTester.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.FormulaEvaluatorTester.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/nicholaszamani/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/Users/nicholaszamani/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/Users/nicholaszamani/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/nicholaszamani/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/nicholaszamani/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/nicholaszamani/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="FormulaEvaluatorTester" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -85,7 +108,8 @@
       <updated>1705636636014</updated>
       <workItem from="1705636638294" duration="2381000" />
       <workItem from="1705639067457" duration="150000" />
-      <workItem from="1705639227699" duration="5105000" />
+      <workItem from="1705639227699" duration="8546000" />
+      <workItem from="1705694677817" duration="624000" />
     </task>
     <task id="LOCAL-00001" summary="Version 1">
       <option name="closed" value="true" />
@@ -95,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705639582450</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Version 2">
+      <option name="closed" value="true" />
+      <created>1705644954579</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705644954580</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +137,26 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Version 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1" />
+    <MESSAGE value="Version 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/FormulaEvaluatorTester/Program.cs</url>
+          <line>23</line>
+          <properties documentPath="$PROJECT_DIR$/FormulaEvaluatorTester/Program.cs" initialLine="23" containingFunctionPresentation="">
+            <startOffsets>
+              <option value="479" />
+            </startOffsets>
+            <endOffsets>
+              <option value="526" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
