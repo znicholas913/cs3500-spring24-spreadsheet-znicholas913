@@ -86,7 +86,11 @@ else
     Console.WriteLine("Did not work 86");
 }
 
-// using this method to test the delegate
+/// <summary>
+/// using this method to help test the delegate. Passes in a string to see if that variable has a given value.
+/// </summary>
+/// <param name="str"></param>
+/// <returns>The int value of the varaibles</returns>
 static int method(String str)
 {
     if (str == "pp1")
