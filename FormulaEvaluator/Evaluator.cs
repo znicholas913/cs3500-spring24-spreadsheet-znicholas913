@@ -13,7 +13,7 @@ public static class Evaluator
 
     /// <summary>
     /// The purpose of this function is to take in a string and calculate the value from it.
-    /// For example, we would enter a string of "5+5" and it should return 10.
+    /// For example, we would enter a string of "5+6" and it should return 11.
     /// 
     /// </summary>
     /// <param name="expression"></param>

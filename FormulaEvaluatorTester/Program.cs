@@ -87,7 +87,7 @@ else
 }
 
 /// <summary>
-/// using this method to help test the delegate. Passes in a string to see if that variable has a given value.
+/// Using this method to help test the delegate. Passes in a string to see if that variable has a given value.
 /// </summary>
 /// <param name="str"></param>
 /// <returns>The int value of the varaibles</returns>
