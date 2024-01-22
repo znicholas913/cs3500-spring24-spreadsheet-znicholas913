@@ -1,8 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using FormulaEvaluator;
 
-using FormulaEvaluator;
-
-
+/// <summary>
+/// Created by: Nicholas Zamani
+/// Date: January 21, 2024
+/// This file is the tester file for the FormulaEvaluator class.
+/// </summary>
 
 if (Evaluator.Evaluate("5+5",null) == 10) 
     Console.WriteLine("Happy Day!");

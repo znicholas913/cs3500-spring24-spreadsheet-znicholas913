@@ -2,7 +2,10 @@
 
 namespace FormulaEvaluator;
 /// <summary>
-/// put name date and summary here
+/// Created by: Nicholas Zamani
+/// Date: January 21, 2024
+/// This class takes in a string of a formula and turns it into the correct integer answer. For example, "5+5" would be
+/// imputed and 10 would be returned. It also uses a delegate to give variables values to be used in the formula.
 /// </summary>
 public static class Evaluator
 {
@@ -132,6 +135,7 @@ public static class Evaluator
 
     /// <summary>
 /// Takes in 2 numbers and an operator. It checks to see what the operator is and returns the value of the expression.
+/// It will also check to make sure we are not dividing by zero.
 /// </summary>
 /// <param name="x"></param>
 /// <param name="y"></param>
