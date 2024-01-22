@@ -49,11 +49,41 @@ else
 {
     Console.WriteLine("Did not work 44");
 }
-if (Evaluator.Evaluate("-(5+5)",method) == 10) 
+// if (Evaluator.Evaluate("-(5+5)",method) == 10) 
+//     Console.WriteLine("Happy Day!");
+// else
+// {
+//     Console.WriteLine("Did not work 54");
+// }
+if (Evaluator.Evaluate("5+pp1", method) == 10) 
     Console.WriteLine("Happy Day!");
 else
 {
     Console.WriteLine("Did not work 54");
+}
+// if (Evaluator.Evaluate("5/pp1", null) == 1) 
+//     Console.WriteLine("Happy Day!");
+// else
+// {
+//     Console.WriteLine("Did not work 54");
+// }
+if (Evaluator.Evaluate("pp1*pp2", method) == 30) 
+    Console.WriteLine("Happy Day!");
+else
+{
+    Console.WriteLine("Did not work 54");
+}
+// if (Evaluator.Evaluate("pp1/-pp2", method) == 30) 
+//     Console.WriteLine("Happy Day!");
+// else
+// {
+//     Console.WriteLine("Did not work 54");
+// }
+if (Evaluator.Evaluate("pp1&pp2", method) == 30) 
+    Console.WriteLine("Happy Day!");
+else
+{
+    Console.WriteLine("Did not work 86");
 }
 
 // using this method to test the delegate
@@ -61,5 +91,7 @@ static int method(String str)
 {
     if (str == "pp1")
         return 5;
-    return -1;
+    if (str == "pp2")
+        return 6;
+    throw new Exception("Variable doesn't exist");
 }

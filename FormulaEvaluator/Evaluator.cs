@@ -60,11 +60,25 @@ public static class Evaluator
                 if (oper.Count != 0 && (oper.Peek() == "*" || oper.Peek() == "/")) 
                 {
                     //pop the top value and the top operator and apply them to the next value t
-                    value.Push(calc(value.Pop(), variableEvaluator(substrings[i]), oper.Pop()));
+                    try
+                    {
+                        value.Push(calc(value.Pop(), variableEvaluator(substrings[i]), oper.Pop()));
+                    }
+                    catch (Exception e)
+                    {
+                        throw new NullReferenceException("Variable has no value.");
+                    }
                 }
                 else
                 {
-                    value.Push(variableEvaluator(substrings[i]));
+                    try
+                    {
+                        value.Push(variableEvaluator(substrings[i]));
+                    }
+                    catch (Exception e)
+                    {
+                        throw new NullReferenceException("Variable has no value.");
+                    }
                 }
                 continue;
             }
@@ -124,7 +138,8 @@ public static class Evaluator
             return value.Pop();
         if (oper.Count != 0)
         {
-            if (value.Count < 2 )
+            //checks to see if there is not enough values or if there are too many operators left.
+            if (value.Count < 2 || oper.Count > 1)
             {
                 throw new InvalidOperationException("This is a bad formula");
             }
