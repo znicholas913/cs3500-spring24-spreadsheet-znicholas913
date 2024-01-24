@@ -66,7 +66,7 @@ public static class Evaluator
                     }
                     catch (Exception e)
                     {
-                        throw new NullReferenceException("Variable has no value.");
+                        throw new ArgumentException("Variable has no value.");
                     }
                 }
                 else
@@ -77,7 +77,7 @@ public static class Evaluator
                     }
                     catch (Exception e)
                     {
-                        throw new NullReferenceException("Variable has no value.");
+                        throw new ArgumentException("Variable has no value.");
                     }
                 }
                 continue;
@@ -90,7 +90,7 @@ public static class Evaluator
                 {
                     if (value.Count < 2 )
                     {
-                        throw new InvalidOperationException("This is a bad formula");
+                        throw new ArgumentException("This is a bad formula");
                     }
                     //pop the top two values and the top operator and push the end result
                     value.Push(calc(value.Pop(), value.Pop(), oper.Pop()));
@@ -123,16 +123,25 @@ public static class Evaluator
                     value.Push(calc(value.Pop(), value.Pop(), oper.Pop()));
                 }
                 //2. the top of the operator stack should be ( , pop it.
-                if (oper.Peek() == "(")
+                if (oper.Count > 0 && oper.Peek() == "(")
                     oper.Pop();
+                else
+                {
+                    throw new ArgumentException("Invalid Formula");
+                }
 
                 //3. If * or / is at the top, pop the value stack twice and operator stack once. Push result into value stack.
-                if (oper.Peek() == "*" || oper.Peek() == "/")
+                if (oper.Count > 0 && (oper.Peek() == "*" || oper.Peek() == "/"))
                 {
                     //pop the top two values and the top operator and push the end result.
                     value.Push(calc(value.Pop(), value.Pop(), oper.Pop()));
                 }
             }
+        }
+
+        if (oper.Count == 0 && value.Count == 0)
+        {
+            throw new ArgumentException("Stack is empty");
         }
         if (oper.Count == 0)
             return value.Pop();
@@ -141,7 +150,7 @@ public static class Evaluator
             //checks to see if there is not enough values or if there are too many operators left.
             if (value.Count < 2 || oper.Count > 1)
             {
-                throw new InvalidOperationException("This is a bad formula");
+                throw new ArgumentException("This is a bad formula");
             }
             return calc(value.Pop(), value.Pop(), oper.Pop());
         }
@@ -161,11 +170,11 @@ public static class Evaluator
         if (oper == "+")
             return x + y;
         if (oper == "-")
-            return x - y;
+            return y - x;
         if (oper == "*")
             return x * y;
         if (oper == "/" && y == 0)
-            throw new DivideByZeroException("Cannot divide by zero.");
+            throw new ArgumentException("Cannot divide by zero.");
         if (oper == "/")
             return x / y;
         return 0;

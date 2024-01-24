@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEvaluator", "Formula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaEvaluatorTester", "FormulaEvaluatorTester\FormulaEvaluatorTester.csproj", "{9EADE0EC-EE70-40F2-B21F-FB347A58E980}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{9E0C3145-A138-4BDE-9CD9-121E9A3FD0DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{9EADE0EC-EE70-40F2-B21F-FB347A58E980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EADE0EC-EE70-40F2-B21F-FB347A58E980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EADE0EC-EE70-40F2-B21F-FB347A58E980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E0C3145-A138-4BDE-9CD9-121E9A3FD0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0C3145-A138-4BDE-9CD9-121E9A3FD0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0C3145-A138-4BDE-9CD9-121E9A3FD0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0C3145-A138-4BDE-9CD9-121E9A3FD0DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

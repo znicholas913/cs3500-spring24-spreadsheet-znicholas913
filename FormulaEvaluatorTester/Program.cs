@@ -79,13 +79,18 @@ else
 // {
 //     Console.WriteLine("Did not work 54");
 // }
-if (Evaluator.Evaluate("pp1&pp2", method) == 30) 
-    Console.WriteLine("Happy Day!");
+// if (Evaluator.Evaluate("pp1&pp2", method) == 30) 
+//     Console.WriteLine("Happy Day!");
+// else
+// {
+//     Console.WriteLine("Did not work 86");
+// }
+if (Evaluator.Evaluate("2+5*7)", s => 0) == 12)
+    Console.WriteLine("We fixed it");
 else
 {
-    Console.WriteLine("Did not work 86");
+    Console.WriteLine("Not fixed yet.");
 }
-
 /// <summary>
 /// Using this method to help test the delegate. Passes in a string to see if that variable has a given value.
 /// </summary>
