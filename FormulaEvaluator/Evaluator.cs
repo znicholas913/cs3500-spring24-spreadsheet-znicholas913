@@ -122,7 +122,7 @@ public static class Evaluator
                     //pop the top two values and the top operator and push the end result.
                     value.Push(calc(value.Pop(), value.Pop(), oper.Pop()));
                 }
-                //2. the top of the operator stack should be ( , pop it.
+                //2. the top of the operator stack should be ( , pop it. 
                 if (oper.Count > 0 && oper.Peek() == "(")
                     oper.Pop();
                 else

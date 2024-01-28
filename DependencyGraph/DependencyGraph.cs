@@ -209,7 +209,7 @@ namespace SpreadsheetUtilities
       {
           depend[key].Remove(s);
       }
-      //need to create a new key with s in the list or add it to an already created list.
+      //need to create a new key with s in the list or add it to an already created list. 
       foreach (var t in newDependees)
       {
         AddDependency(t,s);

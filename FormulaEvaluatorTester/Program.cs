@@ -85,7 +85,7 @@ else
 // {
 //     Console.WriteLine("Did not work 86");
 // }
-if (Evaluator.Evaluate("2+5*7)", s => 0) == 12)
+if (Evaluator.Evaluate("2+5*7)", s => 0) == 12) 
     Console.WriteLine("We fixed it");
 else
 {
