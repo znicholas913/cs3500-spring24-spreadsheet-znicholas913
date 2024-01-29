@@ -84,12 +84,8 @@ namespace SpreadsheetUtilities
     /// </summary>
     public bool HasDependents(string s)
     {
-      //
-      if (depend.ContainsKey(s))
-      {
-        if (depend[s].Count > 0)
+        if (depend.ContainsKey(s) && depend[s].Count > 0)
           return true;
-      }
       return false;
     }
 
@@ -119,7 +115,7 @@ namespace SpreadsheetUtilities
       { 
         return depend[s];
       }
-      return null;
+      return new List<string>();;
     }
 
     /// <summary>
@@ -127,8 +123,13 @@ namespace SpreadsheetUtilities
     /// </summary>
     public IEnumerable<string> GetDependees(string s)
     {
-      IEnumerable<string> enumItems = depend.Keys;
-      return enumItems;
+      List<string> dependee = new List<string>();
+      foreach (var item in depend)
+      {
+        if (item.Value.Contains(s))
+          dependee.Add(item.Key);
+      }
+      return dependee;
     }
 
 
@@ -145,21 +146,20 @@ namespace SpreadsheetUtilities
     
     public void AddDependency(string s, string t)
     {
-      //checks to see if the dependee is in the dictionary
-      bool temp = depend.ContainsKey(s);
       //if the dependee is not in the dictionary it will add a new arraylist to that key.
-      if (!temp)
-      {
-        List<string> dependsOn = new List<string>();
-        dependsOn.Add(t);
-        depend.Add(s, dependsOn);
-      }
-      else
-      {
+
+      if (!depend.ContainsKey(s))
+        {
+          depend[s] = new List<string>();
+        }
+
         //add the dependent to the list at the key.
-        depend[s].Add(t);
-      }
-      size++;
+        if (!depend[s].Contains(t))
+        {
+          depend[s].Add(t);
+          size++;
+        }
+        
     }
 
 
@@ -179,6 +179,8 @@ namespace SpreadsheetUtilities
           //removes the dependent
           depend[s].Remove(t);
         }
+        if (depend[s].Count == 0)
+          depend.Remove(s);
         //reduces the size. 
         size--;
       }
@@ -191,9 +193,7 @@ namespace SpreadsheetUtilities
     /// </summary>
     public void ReplaceDependents(string s, IEnumerable<string> newDependents)
     {
-      depend.Remove(s);
-      List<string> asList = newDependents.ToList();
-      depend.Add(s, asList);
+      depend[s] = newDependents.ToList();
     }
 
 
@@ -203,7 +203,6 @@ namespace SpreadsheetUtilities
     /// </summary>
     public void ReplaceDependees(string s, IEnumerable<string> newDependees)
     {
-      List<string> asList = newDependees.ToList();
       //which ever keys contain a value s, get rid of the s.
       foreach (var key in GetDependees(s))
       {
