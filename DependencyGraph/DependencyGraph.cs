@@ -14,6 +14,8 @@ namespace SpreadsheetUtilities
 {
 
   /// <summary>
+  /// Code Finished by: Nicholas Zamani
+  /// Date: 01/28/2024
   /// (s1,t1) is an ordered pair of strings
   /// t1 depends on s1; s1 must be evaluated before t1
   /// 
