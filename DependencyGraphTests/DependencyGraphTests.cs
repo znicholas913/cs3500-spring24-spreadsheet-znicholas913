@@ -236,5 +236,23 @@ namespace DependencyGraphTests
                     HashSet<string>(t.GetDependees(letters[i]))));
             }
         }
+
+        /// <summary>
+        ///Non-empty graph contains something
+        ///</summary>
+        [Test]
+        public void TestSameDependeeandDependent()
+        {
+            DependencyGraph t = new DependencyGraph();
+            t.AddDependency("a", "a");
+            t.AddDependency("a", "c");
+            t.AddDependency("c", "c");
+            t.AddDependency("b", "d");
+            IEnumerator<string> e = t.GetDependees("a").GetEnumerator();
+            Assert.IsTrue(e.MoveNext());
+            e = t.GetDependees("b").GetEnumerator();
+            Assert.IsFalse(e.MoveNext());
+            
+        }
     }
 }
