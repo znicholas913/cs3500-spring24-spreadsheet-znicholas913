@@ -238,7 +238,8 @@ namespace DependencyGraphTests
         }
 
         /// <summary>
-        ///Non-empty graph contains something
+        ///Non-empty graph contains something and checks to see if it works with dependee and dependent as the same
+        /// string.
         ///</summary>
         [Test]
         public void TestSameDependeeandDependent()
