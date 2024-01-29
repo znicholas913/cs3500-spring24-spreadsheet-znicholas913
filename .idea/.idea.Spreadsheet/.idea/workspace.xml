@@ -7,31 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0be044ff-4525-44ac-8085-ef2298228040" name="Changes" comment="DependencyGraph1">
+    <list default="true" id="0be044ff-4525-44ac-8085-ef2298228040" name="Changes" comment="DependencyGraph2">
+      <change afterPath="$PROJECT_DIR$/DependencyGraph/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Spreadsheet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spreadsheet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyGraph/DependencyGraph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyGraph/DependencyGraph.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/ref/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/ref/FormulaEvaluator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/refint/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/refint/FormulaEvaluator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/ref/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/ref/FormulaEvaluatorTester.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/refint/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/refint/FormulaEvaluatorTester.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spreadsheet.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Spreadsheet.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +35,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/DependencyGraph/DependencyGraph.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/DependencyGraph/DependencyGraph.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -140,7 +119,7 @@
       <workItem from="1705899975702" duration="2335000" />
       <workItem from="1705902489264" duration="2010000" />
       <workItem from="1706053775272" duration="7812000" />
-      <workItem from="1706236367535" duration="22146000" />
+      <workItem from="1706236367535" duration="22886000" />
     </task>
     <task id="LOCAL-00001" summary="Version 1">
       <option name="closed" value="true" />
@@ -262,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706462520111</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="DependencyGraph2">
+      <option name="closed" value="true" />
+      <created>1706509967916</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1706509967916</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +280,8 @@
     <MESSAGE value="Final/Fixed Version of Assign 1" />
     <MESSAGE value="Depend1" />
     <MESSAGE value="DependencyGraph1" />
-    <option name="LAST_COMMIT_MESSAGE" value="DependencyGraph1" />
+    <MESSAGE value="DependencyGraph2" />
+    <option name="LAST_COMMIT_MESSAGE" value="DependencyGraph2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
