@@ -19,8 +19,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Net;
+using System.Numerics;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -43,6 +46,8 @@ namespace SpreadsheetUtilities
   /// to add extra restrictions on the validity of a variable (beyond the standard requirement 
   /// that it consist of a letter or underscore followed by zero or more letters, underscores,
   /// or digits.)  Their use is described in detail in the constructor and method comments.
+  /// Finished by: Nicholas Zamani
+  /// Date: 02/04/2024
   /// </summary>
   public class Formula
   {
@@ -55,15 +60,22 @@ namespace SpreadsheetUtilities
     /// The associated normalizer is the identity function, and the associated validator
     /// maps every string to true.  
     /// </summary>
-    private Func<string, string> normalize;
-    private Func<string, bool> isValid;
-    private string[] expression;
+    private Func<string, string> _normalize;
+    private Func<string, bool> _isValid;
+    private readonly string [] _expression;
     public Formula(String formula) :
         this(formula, s => s, s => true)
     {
-      CheckFormula(formula, s => s, s => true);
-      this.isValid = s => true;
-      this.normalize = s => s;
+      this._isValid = s => true;
+      this._normalize = s => s;
+      _expression = new string[GetTokens(formula).Count()];
+      int count = 0;
+      foreach (var token in GetTokens(formula))
+      {
+          _expression[count] = token;
+          count++;
+      }
+      CheckFormula();
     }
 
     /// <summary>
@@ -90,9 +102,16 @@ namespace SpreadsheetUtilities
     /// </summary>
     public Formula(String formula, Func<string, string> normalize, Func<string, bool> isValid)
     {
-      CheckFormula(formula, normalize, isValid);
-      this.normalize = normalize;
-      this.isValid = isValid;
+      this._normalize = normalize;
+      this._isValid = isValid;
+      _expression = new string[GetTokens(formula).Count()];
+      int count = 0;
+      foreach (var token in GetTokens(formula))
+      {
+          _expression[count] = token;
+          count++;
+      }
+      CheckFormula();
     }
 
     /// <summary>
@@ -118,6 +137,7 @@ namespace SpreadsheetUtilities
     /// </summary>
     public object Evaluate(Func<string, double> lookup)
     {
+        //helper method 
       return Calculate(lookup);
     }
 
@@ -134,7 +154,21 @@ namespace SpreadsheetUtilities
     /// </summary>
     public IEnumerable<String> GetVariables()
     {
-      return null;
+        List<string> variables = new List<string>();
+        //loop through all of the tokens
+        foreach (var item in _expression)
+        {
+            int j = 0;
+            bool result = int.TryParse(item, out j);
+            //check to make sure the item is a variable.
+            if (!result && item != "+" && item != "-" && item != "*" && item != "/"
+                && item != ")" && item != "(" && !variables.Contains(item))
+            {
+                //add the variables to a list.
+                variables.Add(item);
+            }
+        }
+        return variables;
     }
 
     /// <summary>
@@ -149,9 +183,46 @@ namespace SpreadsheetUtilities
     /// </summary>
     public override string ToString()
     {
-      return null;
+        double j = 0;
+        String toString = "";
+        for (int i = 0; i < _expression.Length; i++)
+        {
+            if (double.TryParse(_expression[i], out j))
+            {
+                toString += RemoveZeros(_expression[i]);
+            }
+            //add the token to the string
+            else
+                toString += _expression[i];
+        } 
+        return toString;
     }
+/// <summary>
+/// Remove any unwanted or extra zeros from the end of a double.
+/// </summary>
+/// <param name="s"></param>
+/// <returns></returns>
+    private string RemoveZeros(string s)
+    {
+        char[] characters = s.ToCharArray();
+        List<char> charList = characters.ToList();
+        if (!charList.Contains('.'))
+            return s;
+        for (int i = charList.Count - 1; i > 0; i--)
+        {
+            if (charList[i] != '0')
+                break;
+            else
+            {
+                charList.Remove(charList[i]);
+            }
+        }
 
+        if (charList[charList.Count-1] == '.')
+            charList.Remove(charList[charList.Count-1]);
+        char[] temp2 = charList.ToArray();
+        return new string(temp2);
+    }
     /// <summary>
     ///  <change> make object nullable </change>
     ///
@@ -176,6 +247,12 @@ namespace SpreadsheetUtilities
     /// </summary>
     public override bool Equals(object? obj)
     {
+        //Check if the object is null or not a formula.
+        if (obj == null || !(obj is Formula))
+            return false;
+        //Check if both strings are the same.
+        if (obj.ToString() == this.ToString())
+            return true;
       return false;
     }
 
@@ -186,7 +263,10 @@ namespace SpreadsheetUtilities
     /// </summary>
     public static bool operator ==(Formula f1, Formula f2)
     {
-      return false;
+        //Check if both strings are the same.
+        if (f1.ToString() == f2.ToString())
+            return true;
+        return false;
     }
 
     /// <summary>
@@ -196,7 +276,10 @@ namespace SpreadsheetUtilities
     /// </summary>
     public static bool operator !=(Formula f1, Formula f2)
     {
-      return false;
+        //Check if both strings are the same.
+        if (f1.ToString() == f2.ToString())
+            return false;
+        return true;
     }
 
     /// <summary>
@@ -206,7 +289,27 @@ namespace SpreadsheetUtilities
     /// </summary>
     public override int GetHashCode()
     {
-      return 0;
+        int code = 0;
+        foreach (var item in _expression)
+        {
+            int j = 0;
+            bool result = int.TryParse(item, out j);
+            //If the current token is an integer, add that value to the hashcode.
+            if (result)
+                code += int.Parse(item);
+            //If the current token is + or - then add one to the hashcode.
+            if (item == "+" || item == "-")
+                code += 1;
+            //If the current token is / or * then add 2 to the hashcode. 
+            if (item == "/" || item == "*")
+                code += 2;
+            //For any other tokens, add 3 to the hashcode.
+            else
+            {
+                code += 3;
+            }
+        }
+        return code;;
     }
 
     /// <summary>
@@ -239,69 +342,58 @@ namespace SpreadsheetUtilities
       }
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //use this method for the constructors and don't forget to finish this!!!!!!!!!!!!!
-    private bool CheckFormula(String formula, Func<string, string> normalize, Func<string, bool> isValid)
+    /// <summary>
+    /// This will verify that the formula created is a valid formula. This will also normalize and
+    /// validate any variables. If anything is wrong with the formula it will throw an exception.
+    /// </summary>
+    /// <returns>Return true if it's a valid formula.</returns>
+    /// <exception cref="FormulaFormatException"></exception>
+    private bool CheckFormula()
     {
       int intCount = 0;
       int opCount = 0;
       int rightParen = 0;
       int leftParen = 0;
-      string[] substrings = Regex.Split(formula, "(\\()|(\\))|(\\-)|(\\+)|(\\*)|(\\/)");
-      expression = substrings;
-      for ( int i = 0; i < substrings.Length; i++)
+      for ( int i = 0; i < _expression.Length; i++)
       {
-        substrings[i] = substrings[i].Trim();
-        if (substrings[i] == "" || substrings[i] == " ")
-          continue;
         int j = 0;
-        bool result = int.TryParse(substrings[i], out j);
+        bool result = int.TryParse(_expression[i], out j);
+        //If the token is an integer, add to counter.
         if (result)
         {
           intCount++;
           continue;
         }
-        //checks if it is a variable and if the variable is valid.
-        if (substrings[i] != "+" && substrings[i] != "-" && substrings[i] != "*" && substrings[i] != "/"
-            && substrings[i] != ")" && substrings[i] != "(")
-        {
-          if (!isValid(normalize(substrings[i])))
+        //checks if it is a variable and if the variable is valid. Will also normalize the variable.
+        if (_expression[i] != "+" && _expression[i] != "-" && _expression[i] != "*" && _expression[i] != "/"
+            && _expression[i] != ")" && _expression[i] != "(")
+        { 
+            _expression[i] = _normalize(_expression[i]);
+          if (!_isValid(_normalize(_expression[i])))
             throw new FormulaFormatException("This is not a valid variable.");
+          //Since this is a number as well, we add to the integer counter.
           intCount++;
         }
         //checks if the current index is an operator and it keeps track of how many there have been.
-        if (substrings[i] == "+" || substrings[i] == "-" || substrings[i] == "*" || substrings[i] == "/")
+        if (_expression[i] == "+" || _expression[i] == "-" || _expression[i] == "*" || _expression[i] == "/")
         {
           opCount++;
           continue;
         }
-
-        if (substrings[i] != "(")
+        //Keep track of the amount of left and right parentheses.
+        if (_expression[i] != "(")
           leftParen++;
-        if (substrings[i] != ")")
+        if (_expression[i] != ")")
           rightParen++;
         
         else
         {
           //checks to see if the variable is valid.
-          if (!isValid(normalize(substrings[i])))
+          if (!_isValid(_normalize(_expression[i])))
           {
             throw new FormulaFormatException("This is not a valid variable.");
           }
         }
-
-
       }
       //checks to see if there are too many operators.
       if (opCount >= intCount)
@@ -309,16 +401,16 @@ namespace SpreadsheetUtilities
         throw new FormulaFormatException("There are too many operators in this formula.");
       }
       //makes sure the formula doesn't end with an operator.
-      if (substrings[substrings.Length-1] == "+" || substrings[substrings.Length-1] == "-" || 
-          substrings[substrings.Length-1] == "/" || substrings[substrings.Length-1] == "*" ||
-          substrings[substrings.Length-1] == "(")
+      if (_expression[_expression.Length-1] == "+" || _expression[_expression.Length-1] == "-" || 
+          _expression[_expression.Length-1] == "/" || _expression[_expression.Length-1] == "*" ||
+          _expression[_expression.Length-1] == "(")
       {
         throw new FormulaFormatException("Cannot end the formula with an operator.");
       }
       //makes sure the formula doesn't start with an operator.
-      if (substrings[0] == "+" || substrings[0] == "-" || 
-          substrings[0] == "/" || substrings[0] == "*" ||
-          substrings[0] == ")")
+      if (_expression[0] == "+" || _expression[0] == "-" || 
+          _expression[0] == "/" || _expression[0] == "*" ||
+          _expression[0] == ")")
       {
         throw new FormulaFormatException("Cannot start the formula with an operator.");
       }
@@ -329,22 +421,6 @@ namespace SpreadsheetUtilities
       }
       return true;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /// <summary>
     /// The purpose of this function is to take in a string and calculate the value from it.
     /// For example, we would enter a string of "5+6" and it should return 11.
@@ -357,45 +433,42 @@ namespace SpreadsheetUtilities
         //creates a value and an operator stack.
         Stack<double> value = new Stack<double>();
         Stack<String> oper = new Stack<String>();
-        for (int i = 0; i < expression.Length; i++)
+        for (int i = 0; i < _expression.Length; i++)
         {
-            expression[i] = expression[i].Trim();
-            if (expression[i] == "" || expression[i] == " ")
-                continue;
             double j = 0;
-            bool result = double.TryParse(expression[i], out j);
+            bool result = double.TryParse(_expression[i], out j);
             
             if (result) // if t is a double.
             {
                 if (oper.Count != 0 && (oper.Peek() == "*" || oper.Peek() == "/")) // if the top operator of the stack is multiplication or division 
                 {
                     //pop the top value and the top operator and apply them to the next value t
-                    value.Push(Calc(value.Pop(), Double.Parse(expression[i]), oper.Pop()));
+                    value.Push(Calc(value.Pop(), Double.Parse(_expression[i]), oper.Pop()));
                 }
                 else
                 {
-                    value.Push(Double.Parse(expression[i]));
+                    value.Push(Double.Parse(_expression[i]));
                 }
                 continue;
             }
             // if t is a variable
-            if (expression[i] != "+" && expression[i] != "-" && expression[i] != "*" && expression[i] != "/"
-                && expression[i] != ")" && expression[i] != "(") 
+            if (_expression[i] != "+" && _expression[i] != "-" && _expression[i] != "*" && _expression[i] != "/"
+                && _expression[i] != ")" && _expression[i] != "(") 
             {
                 // if the top operator of the stack is multiplication or division 
                 if (oper.Count != 0 && (oper.Peek() == "*" || oper.Peek() == "/")) 
                 {
                     //pop the top value and the top operator and apply them to the next value t
-                    value.Push(Calc(value.Pop(), lookup(expression[i]), oper.Pop()));
+                    value.Push(Calc(value.Pop(), lookup(_expression[i]), oper.Pop()));
                 }
                 else
                 {
-                    value.Push(lookup(expression[i]));
+                    value.Push(lookup(_expression[i]));
                 }
                 continue;
             }
             //if the next t is + or - 
-            if (expression[i] == "+" || expression[i] == "-") 
+            if (_expression[i] == "+" || _expression[i] == "-") 
             {
                 // if the top operator of the stack is addition or subtraction
                 if (oper.Count != 0 && (oper.Peek() == "+" || oper.Peek() == "-")) 
@@ -404,24 +477,24 @@ namespace SpreadsheetUtilities
                     value.Push(Calc(value.Pop(), value.Pop(), oper.Pop()));
                 }
 
-                oper.Push(expression[i]);
+                oper.Push(_expression[i]);
                 continue;
             }
 
             //if the next t is * or / then just push it to the operator stack
-            if (expression[i] == "*" || expression[i] == "/") 
+            if (_expression[i] == "*" || _expression[i] == "/") 
             {
-                oper.Push(expression[i]);
+                oper.Push(_expression[i]);
                 continue;
             }
             // if the next t is ( then push it to the operator stack
-            if (expression[i] == "(") 
+            if (_expression[i] == "(") 
             {
-                oper.Push(expression[i]);
+                oper.Push(_expression[i]);
                 continue;
             }
             //if the next t is ) then continue
-            if (expression[i] == ")")
+            if (_expression[i] == ")")
             {
                 //1. if + or - is at the top , pop the value stack twice and operator stack once. Push result into value stack.
                 // if the top operator of the stack is addition or subtraction.
