@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using SpreadsheetUtilities;
 
 
-namespace Spreadsheet
+namespace SS
 {
 
     /// <summary>
