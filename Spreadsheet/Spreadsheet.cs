@@ -2,7 +2,11 @@
 using SpreadsheetUtilities;
 
 namespace SS;
-
+/// <summary>
+/// This is the spreadsheet class. THis is meant to create a new spreadsheet and check for validity and set cells to values.
+/// Created by: Nicholas Zamani
+/// Date: Feb 11, 2024
+/// </summary>
 public class Spreadsheet : AbstractSpreadsheet
 {
     private Dictionary<string, object> spreadsheet;

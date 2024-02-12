@@ -2,7 +2,11 @@ using SS;
 using SpreadsheetUtilities;
 
 namespace SS;
-
+/// <summary>
+/// This is the test class for the spreadsheet class. This meant to make sure everything is running according to plan.
+/// Created by: Nicholas Zamani
+/// Date: Feb 11, 2024
+/// </summary>
 [TestClass]
 public class SpreadsheetTests
 {
