@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FormulaEvaluator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef8e4898c6970e54f49117bf74a54ade7557bf9f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e32550e6bd443d9ea2f75be702b9c43e48415759")]
 [assembly: System.Reflection.AssemblyProductAttribute("FormulaEvaluator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FormulaEvaluator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

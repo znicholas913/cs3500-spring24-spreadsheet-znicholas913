@@ -252,8 +252,8 @@ namespace SpreadsheetUtilities
             return false;
         //Check if both strings are the same.
         if (obj.ToString() == this.ToString())
-            return true;
-      return false;
+            return true; 
+        return false;
     }
 
     /// <summary>
@@ -539,7 +539,7 @@ namespace SpreadsheetUtilities
         if (oper == "*")
             return x * y;
         if (oper == "/" && y == 0)
-            throw new ArgumentException("Cannot divide by zero.");
+            throw new ArgumentException("Cannnot divide by zero.");
         if (oper == "/")
             return x / y;
         return 0;

@@ -77,7 +77,7 @@ namespace SpreadsheetUtilities
     public int this[string s]
     {
       //return the amount of dependees
-      get { return depend[s].Count; }
+      get { return GetDependees(s).Count(); }
     }
 
 
@@ -97,12 +97,19 @@ namespace SpreadsheetUtilities
     /// </summary>
     public bool HasDependees(string s)
     {
-      //check to see if the dictionary contains a key.
-      if (depend.ContainsKey(s))
+      foreach (var item in depend)
       {
-        return true;
+        if (item.Value.Contains(s))
+          return true;
       }
+
       return false;
+      //check to see if the dictionary contains a key.
+      // if (depend.ContainsKey(s))
+      // {
+      //   return true;
+      // }
+      // return false;
     }
 
 
