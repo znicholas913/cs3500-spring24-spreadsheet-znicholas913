@@ -1,6 +1,7 @@
-﻿using SpreadsheetUtilities;
+﻿using Spreadsheet;
+using SpreadsheetUtilities;
 
-namespace Spreadsheet;
+namespace SS;
 
 public class Spreadsheet : AbstractSpreadsheet
 {

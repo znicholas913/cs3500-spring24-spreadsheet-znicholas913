@@ -1,12 +1,12 @@
 using Spreadsheet;
 using SpreadsheetUtilities;
 
-namespace SpreadsheetTests;
+namespace SS;
 
 [TestClass]
 public class SpreadsheetTests
 {
-    Spreadsheet.Spreadsheet tester = new Spreadsheet.Spreadsheet();
+    Spreadsheet tester = new Spreadsheet();
     /// <summary>
     ///Test to see if the get Names of all empty cells method returns an empty list when
     /// there are no cells with anything in them.
