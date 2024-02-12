@@ -78,6 +78,20 @@ public class SpreadsheetTests
         tester.GetCellContents(null);
     }
 
+    [TestMethod]
+    [ExpectedException(typeof(CircularException))]
+    public void TestCircularException()
+    {
+        Formula test1 = new Formula("B1");
+        Formula test2 = new Formula("A1*A1");
+        Formula test3 = new Formula("B1+A1");
+        Formula test4 = new Formula("B1-C1");
+        tester.SetCellContents("A1", test1);
+        tester.SetCellContents("B1", test2);
+        tester.SetCellContents("C1", test3);
+        tester.SetCellContents("D1", test4);
+    }
+
     // [TestMethod]
     // public void TestGetDirectDependents()
     // {

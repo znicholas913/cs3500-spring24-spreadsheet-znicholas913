@@ -43,18 +43,21 @@ public class Spreadsheet : AbstractSpreadsheet
     {
         SetCells(name, number);
         keys.Add(name);
+        GetCellsToRecalculate(keys);
         return keys;
     }
     public override ISet<String> SetCellContents(String name, String text)
     {
         SetCells(name, text);
         keys.Add(name);
+        GetCellsToRecalculate(keys);
         return keys;
     }
     public override ISet<String> SetCellContents(String name, Formula formula)
     {
         SetCells(name, formula);
         keys.Add(name);
+        GetCellsToRecalculate(keys);
         return keys;
     }
     protected override IEnumerable<String> GetDirectDependents(String name)
@@ -97,14 +100,39 @@ public class Spreadsheet : AbstractSpreadsheet
     /// <param name="item"></param>
     private void SetCells(string name, object item)
     {
-        
-        if (spreadsheet.ContainsKey(name))
-            spreadsheet[name] = item;
+
+        if (CheckCellName(name))
+        {
+            if (spreadsheet.ContainsKey(name))
+                spreadsheet[name] = item;
+            else
+            {
+                spreadsheet.Add(name, item);
+            }
+        }
         else
         {
-            spreadsheet.Add(name, item);
+            throw new InvalidNameException();
         }
+        
 
+    }
+    /// <summary>
+    /// Checks to see if the cell name is a valid cell name.
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    private bool CheckCellName(string name)
+    {
+        char[] characters = name.ToCharArray();
+        if (characters[0] != '_' || !Char.IsLetter(characters[0]))
+            return false;
+        for (int i = 1; i < characters.Length; i++)
+        {
+            if (!Char.IsLetter(characters[i]) || !Char.IsDigit(characters[i]) || characters[i] != '_')
+                return false;
+        }
+        return true;
     }
     // /// <summary>
     // /// This is only used to test getDirectDependents.
