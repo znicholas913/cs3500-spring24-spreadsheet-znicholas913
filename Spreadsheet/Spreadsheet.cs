@@ -129,11 +129,11 @@ public class Spreadsheet : AbstractSpreadsheet
     private bool CheckCellName(string name)
     {
         char[] characters = name.ToCharArray();
-        if (characters[0] != '_' || !Char.IsLetter(characters[0]))
+        if (characters[0] != '_' && !Char.IsLetter(characters[0]))
             return false;
         for (int i = 1; i < characters.Length; i++)
         {
-            if (!Char.IsLetter(characters[i]) || !Char.IsDigit(characters[i]) || characters[i] != '_')
+            if (!Char.IsLetter(characters[i]) && !Char.IsDigit(characters[i]) && characters[i] != '_')
                 return false;
         }
         return true;
