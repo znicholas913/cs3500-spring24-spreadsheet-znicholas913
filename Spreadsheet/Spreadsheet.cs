@@ -10,9 +10,9 @@ namespace SS;
 public class Spreadsheet : AbstractSpreadsheet
 {
     private Dictionary<string, object> spreadsheet;
-    private HashSet<string> keys = new HashSet<string>();
-    private DependencyGraph Depends = new DependencyGraph();
+    private DependencyGraph Depends;
     private Formula formulaVar;
+    private List<string> allDependents;
     /// <summary>
     /// The Spreadsheet constructor that creates a new empty spreadsheet.
     /// </summary>
@@ -39,54 +39,73 @@ public class Spreadsheet : AbstractSpreadsheet
     }
     public override object GetCellContents(String name)
     {
-        if (name == null || !spreadsheet.ContainsKey(name))
+        if (!CheckCellName(name))
             throw new InvalidNameException();
+        if (name == null)
+            throw new InvalidNameException();
+        if (!spreadsheet.ContainsKey(name))
+            return "";
         return spreadsheet[name];
     }
     public override ISet<String> SetCellContents(String name, double number)
     {
         SetCells(name, number);
-        keys.Add(name);
-        GetCellsToRecalculate(keys);
-        return keys;
+        Depends = new DependencyGraph();
+        dependents();
+        allDependents = new List<string>();
+        allDependents.Add(name);
+        GetAllDependents(name);
+        return allDependents.ToHashSet();
     }
     public override ISet<String> SetCellContents(String name, String text)
     {
-        SetCells(name, text);
-        keys.Add(name);
-        GetCellsToRecalculate(keys);
-        return keys;
+        var temp = GetCellContents(name);
+        try
+        {
+            SetCells(name, text);
+            GetCellsToRecalculate(name);
+        }
+        catch (CircularException e)
+        {
+            SetCells(name, temp);
+            throw e;
+        }
+        Depends = new DependencyGraph();
+        dependents();
+        allDependents = new List<string>();
+        allDependents.Add(name);
+        GetAllDependents(name);
+        return allDependents.ToHashSet();
     }
     public override ISet<String> SetCellContents(String name, Formula formula)
     {
-        SetCells(name, formula);
-        keys.Add(name);
-        GetCellsToRecalculate(keys);
-        return keys;
+        var temp = GetCellContents(name);
+        try
+        {
+            SetCells(name, formula);
+            GetCellsToRecalculate(name);
+        }
+        catch (CircularException e)
+        {
+            SetCells(name, temp);
+            throw e;
+        }
+        Depends = new DependencyGraph();
+        dependents();
+        allDependents = new List<string>();
+        allDependents.Add(name);
+        GetAllDependents(name);
+        return allDependents.ToHashSet();
     }
     protected override IEnumerable<String> GetDirectDependents(String name)
     {
         if (name == null)
-            throw new ArgumentNullException("The name is null.");
+            throw new ArgumentNullException();
         if (name == null || !spreadsheet.ContainsKey(name))
             throw new InvalidNameException();
-        //check if each value is a formula 
-        foreach (var item in spreadsheet)
-        {
-            if (item.Value is Formula)
-            {
-                formulaVar = (Formula) item.Value;
-                //get the variables
-                List<string> vars = formulaVar.GetVariables().ToList();
-                //if the variable is the same as the string then add it
-                foreach (var variable in vars)
-                {
-                    //every item.key is dependent on each of the variables inside of it.
-                    Depends.AddDependency(variable, item.Key);
-                }
-            }
-            
-        }
+        //check if each value is a formula
+        Depends = new DependencyGraph();
+        dependents();
             //check to see if the formula contains the variables.
             //make a helper method to put them into a dependency list.
             //add the variables to the dependency list
@@ -137,6 +156,43 @@ public class Spreadsheet : AbstractSpreadsheet
                 return false;
         }
         return true;
+    }
+/// <summary>
+/// adds all of the dependents into a dictionary.
+/// </summary>
+    private void dependents()
+    {
+        foreach (var item in spreadsheet)
+        {
+            if (item.Value is Formula)
+            {
+                formulaVar = (Formula)item.Value;
+                //get the variables
+                List<string> vars = formulaVar.GetVariables().ToList();
+                //if the variable is the same as the string then add it
+                foreach (var variable in vars)
+                {
+                    //every item.key is dependent on each of the variables inside of it.
+                    Depends.AddDependency(variable, item.Key);
+                }
+            }
+
+        }
+    }
+/// <summary>
+/// This is a recursive method that is used to get all of the dependents for a given cell. These can be direct
+/// or indirect.
+/// </summary>
+/// <param name="name"></param>
+    private void GetAllDependents(string name)
+    {
+        if (Depends.GetDependents(name).Count() == 0)
+            return;
+        foreach (var item in Depends.GetDependents(name))
+        {
+            allDependents.Add(item);
+            GetAllDependents(item);
+        }
     }
     // /// <summary>
     // /// This is only used to test getDirectDependents.

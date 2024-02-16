@@ -7,7 +7,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0be044ff-4525-44ac-8085-ef2298228040" name="Changes" comment="Spreadsheet6" />
+    <list default="true" id="0be044ff-4525-44ac-8085-ef2298228040" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spreadsheet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spreadsheet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/bin/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/FormulaEvaluator.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/ref/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/ref/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/refint/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/refint/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/bin/Debug/net8.0/FormulaEvaluatorTester.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/FormulaEvaluatorTester.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/ref/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/ref/FormulaEvaluatorTester.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/refint/FormulaEvaluatorTester.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FormulaEvaluatorTester/obj/Debug/net8.0/refint/FormulaEvaluatorTester.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spreadsheet/Spreadsheet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Spreadsheet/Spreadsheet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpreadsheetTests/SpreadsheetTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SpreadsheetTests/SpreadsheetTests.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,12 +57,8 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/DependencyGraph/DependencyGraph.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/791afe8791d94b989d3fcccc49524698134fc8/45/98420b44/Actor`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FormulaEvaluator/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/Spreadsheet/AbstractSpreadsheet.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/Spreadsheet/Spreadsheet.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/Spreadsheet/Spreadsheet.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/nicholaszamani/RiderProjects/Spreadsheet/Spreadsheet/Spreadsheet.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,7 +76,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.FormulaEvaluatorTester.executor": "Run",
+    ".NET Project.FormulaEvaluatorTester.executor": "Debug",
     "423792b0-4796-4487-99c2-b14c65b49fb1.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -67,7 +88,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.spelling",
+    "settings.editor.selected.configurable": "RiderXamlFileTemplatesSettingsId",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -128,7 +149,9 @@
       <workItem from="1707104852304" duration="9230000" />
       <workItem from="1707114229332" duration="8777000" />
       <workItem from="1707433349905" duration="15182000" />
-      <workItem from="1707716015821" duration="5121000" />
+      <workItem from="1707716015821" duration="5809000" />
+      <workItem from="1707872589113" duration="9454000" />
+      <workItem from="1708056398043" duration="2368000" />
     </task>
     <task id="LOCAL-00001" summary="Version 1">
       <option name="closed" value="true" />
@@ -362,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707721097500</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Spreadsheet6">
+      <option name="closed" value="true" />
+      <created>1707721278670</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1707721278671</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,16 +474,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SpreadsheetTests/SpreadsheetTests.cs</url>
-          <line>92</line>
-          <properties documentPath="$PROJECT_DIR$/SpreadsheetTests/SpreadsheetTests.cs" initialLine="92" containingFunctionPresentation="Method 'TestCircularException'">
+          <line>205</line>
+          <properties documentPath="$PROJECT_DIR$/SpreadsheetTests/SpreadsheetTests.cs" initialLine="205" containingFunctionPresentation="Method 'TestUndoCircular'">
             <startOffsets>
-              <option value="3324" />
+              <option value="7322" />
             </startOffsets>
             <endOffsets>
-              <option value="3360" />
+              <option value="7372" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints">
           <properties exception="System.NullReferenceException" isInternal="false" displayValue="NullReferenceException" namespaceName="System">
@@ -462,5 +493,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#SS.Spreadsheet" memberName="spreadsheet" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
