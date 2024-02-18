@@ -1,6 +1,6 @@
 ﻿using SS;
 using SpreadsheetUtilities;
-//checking if branch works
+
 namespace SS;
 /// <summary>
 /// This is the spreadsheet class. THis is meant to create a new spreadsheet and check for validity and set cells to values.
@@ -13,25 +13,14 @@ public class Spreadsheet : AbstractSpreadsheet
     private DependencyGraph Depends;
     private Formula formulaVar;
     private List<string> allDependents;
-    private string Version;
-
     /// <summary>
     /// The Spreadsheet constructor that creates a new empty spreadsheet.
-    /// Makes the version the default version.
     /// </summary>
     public Spreadsheet()
     {
         //zero param constructor that creates an empty spreadsheet
         spreadsheet = new Dictionary<string, object>();
-        Version = "Default";
     }
-    public Spreadsheet(Func<string, bool> isValid, Func<string, string> normalize, string version)
-    {
-        this.IsValid = isValid;
-        this.Normalize = normalize;
-        this.Version = version;
-    }
-
     public override IEnumerable<string> GetNamesOfAllNonemptyCells()
     {
         List<string> nonEmptyCells = new List<string>();
@@ -58,7 +47,7 @@ public class Spreadsheet : AbstractSpreadsheet
             return "";
         return spreadsheet[name];
     }
-    protected override IList<String> SetCellContents(String name, double number)
+    public override ISet<String> SetCellContents(String name, double number)
     {
         SetCells(name, number);
         Depends = new DependencyGraph();
@@ -66,9 +55,9 @@ public class Spreadsheet : AbstractSpreadsheet
         allDependents = new List<string>();
         allDependents.Add(name);
         GetAllDependents(name);
-        return allDependents;
+        return allDependents.ToHashSet();
     }
-    protected override IList<String> SetCellContents(String name, String text)
+    public override ISet<String> SetCellContents(String name, String text)
     {
         var temp = GetCellContents(name);
         try
@@ -86,9 +75,9 @@ public class Spreadsheet : AbstractSpreadsheet
         allDependents = new List<string>();
         allDependents.Add(name);
         GetAllDependents(name);
-        return allDependents;
+        return allDependents.ToHashSet();
     }
-    protected override IList<String> SetCellContents(String name, Formula formula)
+    public override ISet<String> SetCellContents(String name, Formula formula)
     {
         var temp = GetCellContents(name);
         try
@@ -106,7 +95,7 @@ public class Spreadsheet : AbstractSpreadsheet
         allDependents = new List<string>();
         allDependents.Add(name);
         GetAllDependents(name);
-        return allDependents;
+        return allDependents.ToHashSet();
     }
     protected override IEnumerable<String> GetDirectDependents(String name)
     {
@@ -205,34 +194,13 @@ public class Spreadsheet : AbstractSpreadsheet
             GetAllDependents(item);
         }
     }
-
-    public override IList<String> SetContentsOfCell(String name, String content)
-    {
-        //TODO
-        return null;
-    }
-    //TODO
-    public override bool Changed { get; protected set; }
-
-    public override string GetSavedVersion(String filename)
-    {
-        //TODO
-        return null;
-    }
-
-    public override void Save(String filename)
-    {
-        //TODO
-    }
-    public override string GetXML()
-    {
-        //TODO
-        return null;
-    }
-
-    public override object GetCellValue(String name)
-    {
-        //TODO
-        return null;
-    }
+    // /// <summary>
+    // /// This is only used to test getDirectDependents.
+    // /// </summary>
+    // /// <param name="name"></param>
+    // /// <returns></returns>
+    // public List<string> forTestsOnly(string name)
+    // {
+    //     return GetDirectDependents(name).ToList();
+    // }
 }
