@@ -36,7 +36,7 @@ using System;
 using System.Collections.Generic;
 using SpreadsheetUtilities;
 
-namespace SS
+namespace SpreadsheetUtilities
 {
     /// <summary>
     ///   <para>
