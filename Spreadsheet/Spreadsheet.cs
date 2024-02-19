@@ -1,6 +1,9 @@
-﻿using SS;
+﻿using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+using SS;
 using SpreadsheetUtilities;
-
+//checking if branch works
 namespace SS;
 /// <summary>
 /// This is the spreadsheet class. THis is meant to create a new spreadsheet and check for validity and set cells to values.
@@ -13,14 +16,77 @@ public class Spreadsheet : AbstractSpreadsheet
     private DependencyGraph Depends;
     private Formula formulaVar;
     private List<string> allDependents;
+    private string Version;
+    private Func<string, bool> isValid;
+    private Func<string, string> normalize;
+    private bool changeFlag = false;
+    
+
     /// <summary>
     /// The Spreadsheet constructor that creates a new empty spreadsheet.
+    /// Makes the version the default version.
     /// </summary>
-    public Spreadsheet()
+    public Spreadsheet() : this(s => true, s => s, "Default")
     {
-        //zero param constructor that creates an empty spreadsheet
+        this.normalize = s => s;
+        this.isValid = s => true;
+        this.Version = "Default";
         spreadsheet = new Dictionary<string, object>();
     }
+    public Spreadsheet(Func<string, bool> isValid, Func<string, string> normalize, string Version) : 
+        base(isValid, normalize, Version)
+    {
+        this.normalize = normalize;
+        this.isValid = isValid;
+        this.Version = Version;
+        spreadsheet = new Dictionary<string, object>();
+    }
+    public Spreadsheet(string filename, Func<string, bool> isValid, Func<string, string> normalize, string Version) : 
+        base(isValid, normalize, Version)
+    {
+        //TODO
+        this.normalize = normalize;
+        this.isValid = isValid;
+        this.Version = Version;
+        spreadsheet = new Dictionary<string, object>();
+        //for each item in the spreadsheet we have to put each item into the appropriate cell.
+        //use try catch so it can throw an error if anything goes wrong
+        using (XmlReader reader = new XmlTextReader(filename))
+        {
+            string name = null, value = null;
+            int i = 0;
+            
+            reader.MoveToContent();
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element)
+                {
+                    if (reader.Name == "name")
+                    {
+                        XElement el = XNode.ReadFrom(reader) as XElement;
+                        name = el.ToString();
+                        i = 1;
+                    }
+                    if (reader.Name == "content")
+                    {
+                        XElement el = XNode.ReadFrom(reader) as XElement;
+                        value = el.ToString();
+                        i = 2;
+                    }
+                    if (i == 2)
+                    {
+                        SetCellContents(name, value);
+                        i = 0;
+                    }
+                }
+            }
+            
+        }
+        
+    }
+
+
+
     public override IEnumerable<string> GetNamesOfAllNonemptyCells()
     {
         List<string> nonEmptyCells = new List<string>();
@@ -47,7 +113,7 @@ public class Spreadsheet : AbstractSpreadsheet
             return "";
         return spreadsheet[name];
     }
-    public override ISet<String> SetCellContents(String name, double number)
+    protected override IList<String> SetCellContents(String name, double number)
     {
         SetCells(name, number);
         Depends = new DependencyGraph();
@@ -55,9 +121,10 @@ public class Spreadsheet : AbstractSpreadsheet
         allDependents = new List<string>();
         allDependents.Add(name);
         GetAllDependents(name);
-        return allDependents.ToHashSet();
+        changeFlag = true;
+        return allDependents;
     }
-    public override ISet<String> SetCellContents(String name, String text)
+    protected override IList<String> SetCellContents(String name, String text)
     {
         var temp = GetCellContents(name);
         try
@@ -75,9 +142,10 @@ public class Spreadsheet : AbstractSpreadsheet
         allDependents = new List<string>();
         allDependents.Add(name);
         GetAllDependents(name);
-        return allDependents.ToHashSet();
+        changeFlag = true;
+        return allDependents;
     }
-    public override ISet<String> SetCellContents(String name, Formula formula)
+    protected override IList<String> SetCellContents(String name, Formula formula)
     {
         var temp = GetCellContents(name);
         try
@@ -95,7 +163,8 @@ public class Spreadsheet : AbstractSpreadsheet
         allDependents = new List<string>();
         allDependents.Add(name);
         GetAllDependents(name);
-        return allDependents.ToHashSet();
+        changeFlag = true;
+        return allDependents;
     }
     protected override IEnumerable<String> GetDirectDependents(String name)
     {
@@ -194,13 +263,142 @@ public class Spreadsheet : AbstractSpreadsheet
             GetAllDependents(item);
         }
     }
-    // /// <summary>
-    // /// This is only used to test getDirectDependents.
-    // /// </summary>
-    // /// <param name="name"></param>
-    // /// <returns></returns>
-    // public List<string> forTestsOnly(string name)
-    // {
-    //     return GetDirectDependents(name).ToList();
-    // }
+
+    public override IList<String> SetContentsOfCell(String name, String content)
+    {
+        //if the content is a double then we set the cell to that double and return all that depend on that cell.
+        if (double.TryParse(content, out double d))
+        {
+            SetCells(name, d);
+            return GetDirectDependents(name).ToList();
+        }
+        //turn the string into a character array.
+        char[] charArr = content.ToCharArray();
+        //if the first character of content is = then we check the three steps.
+        if (charArr[0] == '=')
+        {
+            //removes the first character from the string.
+            content = content.Substring(1);
+            //creates a new formula from that string. Will throw the correct error if the formula is not valid.
+            Formula contents = new Formula(content);
+            //sets the cell to the formula. Will check for the circular exception and throw if needed.
+            SetCellContents(name, contents);
+            return GetDirectDependents(name).ToList();
+        }
+        //if none of the other statements pass, then it will set the cell to the content as a string.
+        SetCellContents(name, content);
+        return GetDirectDependents(name).ToList();
+    }
+    
+    public override bool Changed
+    {
+        get
+        {
+            return changeFlag;
+        }
+        protected set
+        {
+            if (changeFlag) Changed = true;
+            else Changed = false;
+        }
+    }
+
+    public override string GetSavedVersion(String filename)
+    {
+        try
+        {
+            XmlReader reader = XmlReader.Create(new StreamReader(filename, Encoding.GetEncoding("UTF-16")));
+            while (reader.Read())
+            {
+                return reader.GetAttribute("version");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new SpreadsheetReadWriteException("There was a problem with the file.");
+        }
+
+        return null;
+    }
+
+
+    public override void Save(String filename)
+    {
+        //uses the getxml method to write the entire string to a file.
+        if (Changed)
+        {
+            File.WriteAllText(filename, GetXML());
+            changeFlag = false;
+        }
+        
+    }
+    public override string GetXML()
+    {
+        //loops through each item in the spreadsheet and puts them into an xml formatted string.
+        try
+        {
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = "  ";
+
+            StringBuilder sb = new StringBuilder();
+            using(XmlWriter writer = XmlWriter.Create(sb, settings))
+            {
+                // starts the string
+                writer.WriteStartElement("spreadsheet");
+                writer.WriteAttributeString("version", Version);
+                //loop through each cell in the spreadsheet.
+                foreach (var item in spreadsheet)
+                {
+                    //creates the cell
+                    writer.WriteStartElement("cell");
+                    //creates and sets the name
+                    writer.WriteElementString("name", item.Key);
+                    //if the value is a formula then we add the equals sign when content is created
+                    if (item.Value is Formula)
+                        writer.WriteElementString("content", "=" + item.Value.ToString());
+                    //otherwise we create the content and set the value to it as a string.
+                    else 
+                        writer.WriteElementString("content", item.Value.ToString());
+                    writer.WriteEndElement();
+                }
+                //close the whole spreadsheet.
+                writer.WriteEndElement();
+                sb.AppendLine(writer.ToString());
+            }
+            return sb.ToString();
+        }
+        catch (Exception e)
+        {
+            throw new SpreadsheetReadWriteException("There was a problem with the file.");
+        }
+    }
+    public override object GetCellValue(String name)
+    {
+        if (!CheckCellName(name))
+            throw new InvalidNameException();
+        if (spreadsheet[name] is string)
+            return spreadsheet[name];
+        if (spreadsheet[name] is double)
+            return spreadsheet[name];
+        if (spreadsheet[name] is Formula)
+        {
+            Formula form = (Formula)spreadsheet[name];
+            //figure out what lookup is
+            return form.Evaluate(Lookup);
+        }
+        return null;
+    }
+
+    private double Lookup(string name)
+    {
+        if (spreadsheet[name] is double)
+            return (double)spreadsheet[name];
+        else
+        {
+            throw new ArgumentException();
+        }
+    }
+    
+    
 }
